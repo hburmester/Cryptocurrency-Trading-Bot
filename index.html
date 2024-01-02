@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combined Example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Arial', sans-serif;
+    }
+    .chart-container {
+      width: calc(100% - 400px); /* 100% width with 20px padding on each side */
+      margin: 20px auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Binance Trading Real-time Results</h1>
+
+  <div class="chart-container">
+    <canvas id="timeChart"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>January</td>
+        <td>$5000</td>
+      </tr>
+      <tr>
+        <td>February</td>
+        <td>$7000</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Data for time chart
+    var timeChartData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [{
+        label: 'Revenue Over Time',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        data: [5000, 7000, 6000, 8000, 9000, 7500],
+      }]
+    };
+
+    // Data for bar chart
+    var barChartData = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      datasets: [{
+        label: 'Monthly Revenue',
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1,
+        data: [5000, 7000, 6000, 8000, 9000, 7500],
+      }]
+    };
+
+    // Get the context of the canvas elements
+    var timeChartCtx = document.getElementById('timeChart').getContext('2d');
+    var barChartCtx = document.getElementById('barChart').getContext('2d');
+
+    // Create time chart
+    var timeChart = new Chart(timeChartCtx, {
+      type: 'line',
+      data: timeChartData,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          },
+          x: {
+            display: false // Remove x-axis grid lines
+          }
+        }
+      }
+    });
+
+    // Create bar chart
+    var barChart = new Chart(barChartCtx, {
+      type: 'bar',
+      data: barChartData,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          },
+          x: {
+            display: false // Remove x-axis grid lines
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Replace these with your API keys
 api_key = os.getenv('API_KEY')
 secret_key = os.getenv('API_SECRET')
 

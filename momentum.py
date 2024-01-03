@@ -1,11 +1,10 @@
 import ccxt
 import pandas as pd
 import talib
-import time
+import os
 
-# Replace these with your API keys
-api_key = 'YOUR_API_KEY'
-secret_key = 'YOUR_API_SECRET'
+api_key = os.getenv('API_KEY')
+secret_key = os.getenv('API_SECRET')
 
 # Initialize the exchange (replace 'binance' with your preferred exchange)
 exchange = ccxt.binance({
